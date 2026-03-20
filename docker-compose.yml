@@ -21,14 +21,15 @@ services:
     environment:
       OMRS_CONFIG_MODULE_WEB_ADMIN: "true"
       OMRS_CONFIG_AUTO_UPDATE_DATABASE: "true"
-      OMRS_CONFIG_CREATE_TABLES: "false"
+      OMRS_CONFIG_CREATE_TABLES: "true"
       OMRS_CONFIG_CONNECTION_SERVER: db
       OMRS_CONFIG_CONNECTION_DATABASE: openmrs
       OMRS_CONFIG_CONNECTION_USERNAME: ${OPENMRS_DB_USER:-openmrs}
       OMRS_CONFIG_CONNECTION_PASSWORD: ${OPENMRS_DB_PASSWORD:-openmrs}
-      OMRS_EXTRA_INITIALIZER_STARTUP_LOAD: "disabled"
-      OMRS_EXTRA_DBEVENT_ENABLED: "false"
-      OMRS_EXTRA_pih.config: ${OPENMRS_DB_USER:-"haiti,haiti-local-idgen"}
+      OMRS_EXTRA_INITIALIZER_STARTUP_LOAD: 'disabled'
+      OMRS_EXTRA_DBEVENT_ENABLED: 'false'
+      OMRS_EXTRA_ACTIVITYLOG_ENABLED: 'false'
+      OMRS_EXTRA_PIH_CONFIG: ${PIH_CONFIG:-"haiti,haiti-hsn,haiti-local-idgen"}
       
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/openmrs"]
